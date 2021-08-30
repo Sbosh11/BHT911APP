@@ -11,35 +11,57 @@ library.add(faCheckCircle, faCoffee);
 
 function Options() {
  return (
-  <div className="">
-   <div class="container-sm">
-    Select Subscriptions
-    <Row style={{ justifyContent: "center" }}>
-     <Card style={{ width: "30rem" }}>
-      <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
-      <Card.Body>
-       <h1 class="card-title pricing-card-title">
-        R39<small class="text-muted fw-dark">/mo</small>
-       </h1>
-       <ul class="list-group">
-        <li class="list-group-item text-start">
-         <FontAwesomeIcon icon="check-circle" /> <span>On-Demand Armed Response</span>
-        </li>
-        <li class="list-group-item text-start">
-         <FontAwesomeIcon icon="check-circle" /> Activated via the Trigger App on your phone
-        </li>
-        <li class="list-group-item text-start">
-         <FontAwesomeIcon icon="check-circle" /> Optional Add-On: Handy standalone, wearable Trigger Panic Button, paired with the Trigger
-         app on your phone – sold separately
-        </li>
-        <li class="list-group-item text-center">
-         <MyForm />
-        </li>
-       </ul>
-      </Card.Body>
-     </Card>
-    </Row>
-   </div>
+  <div class="container-sm">
+   <p class="text-center"> Select Subscription</p>
+
+   <Row style={{ justifyContent: "center" }}>
+    <Card style={{ width: "20rem" }}>
+     <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
+     <Card.Body>
+      <h1 class="card-title pricing-card-title">
+       R39<small class="text-muted fw-dark">/mo</small>
+      </h1>
+      <ul class="list-group">
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> <span>On-Demand Armed Response</span>
+       </li>
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> Activated via the Trigger App on your phone
+       </li>
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> Optional Add-On: Handy standalone, wearable Trigger Panic Button, paired with the Trigger
+        app on your phone – sold separately
+       </li>
+       <li class="list-group-item text-center">
+        <MyForm />
+       </li>
+      </ul>
+     </Card.Body>
+    </Card>
+    <Card style={{ width: "20rem" }}>
+     <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
+     <Card.Body>
+      <h1 class="card-title pricing-card-title">
+       R39<small class="text-muted fw-dark">/mo</small>
+      </h1>
+      <ul class="list-group">
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> <span>On-Demand Armed Response</span>
+       </li>
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> Activated via the Trigger App on your phone
+       </li>
+       <li class="list-group-item text-start">
+        <FontAwesomeIcon icon="check-circle" /> Optional Add-On: Handy standalone, wearable Trigger Panic Button, paired with the Trigger
+        app on your phone – sold separately
+       </li>
+       <li class="list-group-item text-center">
+        <MyForm />
+       </li>
+      </ul>
+     </Card.Body>
+    </Card>
+   </Row>
   </div>
  );
 }

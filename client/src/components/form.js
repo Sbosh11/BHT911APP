@@ -12,7 +12,7 @@ function MyForm() {
 <input type="hidden" name="m4" value="" />
 <input type="hidden" name="m5" value="" />
 <input type="hidden" name="m6" value="" />
- <input type="submit" value="GET IT" class="w-50 btn btn-lg btn-outline-primary"/>
+ <input type="submit" value="TEST" class="w-50 btn btn-lg btn-outline-primary"/>
 
 </form>
     );

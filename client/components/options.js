@@ -13,12 +13,12 @@ library.add(faCheckCircle, faCoffee);
 function Options() {
  return (
   <Container>
-   Select Subscriptions
+   Select Subscription
    <Row style={{ justifyContent: "center" }}>
     <Card style={{ width: "30rem" }}>
-     <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
+     <CardHeader style={{ background: "#020F47", color: "white", justifyContent: "center" }}>PANIC</CardHeader>
      <Card.Body>
-      <h1 class="card-title pricing-card-title">
+      <h1 class="card-title pricing-card-title text-center">
        R39<small class="text-muted fw-dark">/mo</small>
       </h1>
       <ul class="list-group">
