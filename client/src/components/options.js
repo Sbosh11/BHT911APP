@@ -11,28 +11,28 @@ library.add(faCheckCircle, faCoffee);
 
 function Options() {
  return (
-  <div class="container-sm">
-   <p class="text-center"> Select Subscription</p>
+  <div className="container-sm">
+   <p className="text-center"> Select Subscription</p>
 
    <Row style={{ justifyContent: "center" }}>
     <Card style={{ width: "20rem" }}>
      <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
      <Card.Body>
-      <h1 class="card-title pricing-card-title">
-       R39<small class="text-muted fw-dark">/mo</small>
+      <h1 className="card-title pricing-card-title">
+       R39<small className="text-muted fw-dark">/mo</small>
       </h1>
-      <ul class="list-group">
-       <li class="list-group-item text-start">
+      <ul className="list-group">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> <span>On-Demand Armed Response</span>
        </li>
-       <li class="list-group-item text-start">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> Activated via the Trigger App on your phone
        </li>
-       <li class="list-group-item text-start">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> Optional Add-On: Handy standalone, wearable Trigger Panic Button, paired with the Trigger
         app on your phone – sold separately
        </li>
-       <li class="list-group-item text-center">
+       <li className="list-group-item text-center">
         <MyForm />
        </li>
       </ul>
@@ -41,21 +41,21 @@ function Options() {
     <Card style={{ width: "20rem" }}>
      <CardHeader style={{ background: "#020F47", color: "white" }}>PANIC</CardHeader>
      <Card.Body>
-      <h1 class="card-title pricing-card-title">
-       R39<small class="text-muted fw-dark">/mo</small>
+      <h1 className="card-title pricing-card-title">
+       R39<small className="text-muted fw-dark">/mo</small>
       </h1>
-      <ul class="list-group">
-       <li class="list-group-item text-start">
+      <ul className="list-group">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> <span>On-Demand Armed Response</span>
        </li>
-       <li class="list-group-item text-start">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> Activated via the Trigger App on your phone
        </li>
-       <li class="list-group-item text-start">
+       <li className="list-group-item text-start">
         <FontAwesomeIcon icon="check-circle" /> Optional Add-On: Handy standalone, wearable Trigger Panic Button, paired with the Trigger
         app on your phone – sold separately
        </li>
-       <li class="list-group-item text-center">
+       <li className="list-group-item text-center">
         <MyForm />
        </li>
       </ul>
