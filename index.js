@@ -17,7 +17,7 @@ app.get("/", function (req, res, next) {
  }
 });
 app.post("/", function (req, res, next) {
- //console.log(req.query);
+ console.log(req.query);
  res.json(req.query);
 
  next();
