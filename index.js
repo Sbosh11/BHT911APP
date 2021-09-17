@@ -1,80 +1,99 @@
-//const express = require("express");
-//import express from "express";
-
-import express from "express";
+const express = require("express");
 const app = express();
-import path from "path";
-
-//const app = express();
+const cors = require("cors");
 const port = process.env.PORT || 8282;
-
-app.get("/", function (req, res, next) {
- if (req.query.token !== "") {
-  next();
- } else {
-  console.log("No auth");
-  next();
- }
+const code = require("./routes/code.js");
+const path = require("path");
+//const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+app.use("/code", code);
+app.use(express.json());
+app.use(cors());
+app.options("*", cors());
+app.use(express.urlencoded({ extended: true }));
+app.use('/admin', function (req, res, next) { // GET 'http://www.example.com/admin/new?a=b'
+  console.dir(req.originalUrl) // '/admin/new?a=b' (WARNING: beware query string)
+  console.dir(req.baseUrl) // '/admin'
+  console.dir(req.path) // '/new'
+  console.dir(req.baseUrl + req.path) // '/admin/new' (full path without query string)
+  next()
 });
-app.post("/", function (req, res, next) {
- console.log(req.query);
- res.json(req.query);
 
- next();
+
+
+app.get('/', (req, res, next) => {
+   let myc = req.query
+   console.log(myc)
+   console.dir(req.originalUrl)
+res.cookie('test', JSON.stringify(myc), {
+    maxAge: 86400 * 1000, // 24 hours
+    httpOnly: false, // http only, prevents JavaScript cookie access
+    secure: false // cookie must be sent over https / ssl
 });
-/**Define static file */
-const __dirname = path.resolve();
+//res.send(myc)
+next()
+})
+
 const buildPath = path.normalize(path.join(__dirname, "client/build"));
 app.use(express.static(buildPath));
-
 app.get("/", (req, res) => {
  res.sendFile(buildPath + "index.html");
 });
 
-/*app.get("/"),
- (req, res) => {
-  res.send({
-   msg: "Hello",
-   user: "Sibo",
-  });
- };
 
-app.get("/hello", function (req, res, next) {
- if (req.query.token !== "") {
-  next();
+app.get("/", function (req, res, next) {
+ if (req.query.token !== "" && req.query.request_id) {
+ res.json(req.query)
+console.log(res.json(req.body))
+next();
  } else {
   console.log("No auth");
+  res.send("No Auth");
+  next();
  }
 });
 
-/*app.get("/", (req, res) => {
- //res.send("Test Page");
-res.sendFile(buildPath + "index.html");
-});*/
+app.post('/', (req, res,next) => {
+   console.log(res.json(req.body))
+    next()
+})
 
-/*app.get("/", (req, res) => {
- var search = req.query.search;
- const page = req.query.page;
- const perPage = req.query.perPage;
- //res, json(search);
- console.log(search);
-});*/
 
-/*
-app.get("/form", (req, res, next) => {
- if (req.query.token !== "") {
-  next();
- } else {
-  console.log("No auth");
- }*/
 
-app.use(express.json());
-app.use(
- express.urlencoded({
-  extended: true,
- }),
-);
+app.get("/decline", (req, res) => {
+ res.send("Declined");
+});
+
+app.post("/decline", (req, res, next) => {
+console.log(res.json(req.body))
+next()
+});
+
+
+ app.get("/notify", (req, res,next) => {
+ res.send("Notify");
+ next()
+});
+
+app.post("/notify", (req, res,next) => {
+res.json(req.body);
+next()
+});
+
+
+app.get("/redirect", (req, res, next) => {
+res.send("redirected");
+next()
+});
+
+app.post("/redirect", (req, res,next) => {
+res.json(req.body);
+next()
+});
+app.get('/')
+
 
 app.listen(port, () => {
- console.log(`Example app listening at http://localhost:${port}`);
+console.log(`Example app listening at http://localhost:${port}`);
 });
