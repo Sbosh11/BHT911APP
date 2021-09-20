@@ -45,7 +45,9 @@ app.get("/", (req, res) => {
 app.get("/", function (req, res, next) {
  if (req.query.token !== "" && req.query.request_id) {
  res.json(req.query)
-console.log(res.json(req.body))
+ console.log(req.body)
+
+
 next();
  } else {
   console.log("No auth");
@@ -55,7 +57,7 @@ next();
 });
 
 app.post('/', (req, res,next) => {
-   console.log(res.json(req.body))
+  
     next()
 })
 
@@ -71,13 +73,13 @@ next()
 });
 
 
- app.get("/notify", (req, res,next) => {
- res.send("Notify");
+ app.get("/accept", (req, res,next) => {
+console.log(accepted)
  next()
 });
 
-app.post("/notify", (req, res,next) => {
-res.json(req.body);
+app.post("/accept", (req, res,next) => {
+console.log(res.json(req.body))
 next()
 });
 
@@ -88,9 +90,10 @@ next()
 });
 
 app.post("/redirect", (req, res,next) => {
-res.json(req.body);
 next()
 });
+
+
 app.get('/')
 
 
