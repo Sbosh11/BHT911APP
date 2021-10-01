@@ -25,7 +25,13 @@ app.use('/admin', function (req, res, next) { // GET 'http://www.example.com/adm
 app.get('/', (req, res, next) => {
    let myc = req.query
    console.log(myc)
-   console.dir(req.originalUrl)
+const protocol = req.protocol;
+    const host = req.hostname;
+    const url = req.originalUrl;
+    const port = process.env.PORT || PORT;
+    const fullUrl = `${protocol}://${host}:${port}${url}`
+    const responseString = `Full URL is: ${fullUrl}`;
+    console.log(responseString)
 res.cookie('test', JSON.stringify(myc), {
     maxAge: 86400 * 1000, // 24 hours
     httpOnly: false, // http only, prevents JavaScript cookie access
@@ -57,10 +63,9 @@ next();
 });
 
 app.post('/', (req, res,next) => {
-  
-    next()
+console.log(req.body)
+res.redirect('/accept')
 })
-
 
 
 app.get("/decline", (req, res) => {
@@ -74,25 +79,24 @@ next()
 
 
  app.get("/accept", (req, res,next) => {
-console.log(accepted)
+res.send("Hello")
  next()
 });
 
 app.post("/accept", (req, res,next) => {
-console.log(res.json(req.body))
+console.log()
 next()
 });
 
 
-app.get("/redirect", (req, res, next) => {
-res.send("redirected");
-next()
-});
+
+
+
+
 
 app.post("/redirect", (req, res,next) => {
 next()
 });
-
 
 app.get('/')
 

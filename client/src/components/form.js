@@ -15,7 +15,7 @@ fetchblogEntry()
 
  render() {
   return (
-   <form action="https://paynow.netcash.co.za/Site/PayNowDonate.aspx?token=100" method="post" name="payNowDonationForm">
+   <form action="https://paynow.netcash.co.za/Site/PayNowDonate.aspx?" method="post" name="payNowDonationForm">
     <input id="m1" name="m1" type="hidden" value="cdeefca1-6961-414b-9103-ce660203afc6" />
     <input id="m2" name="m2" type="hidden" value="ffbb6637-bd72-4af4-b43b-2ab37e39efcf" />
     <input id="p3" name="p3" type="hidden" value="Panic Button" />
