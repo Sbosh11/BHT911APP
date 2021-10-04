@@ -28,7 +28,6 @@ app.get('/', (req, res, next) => {
 const protocol = req.protocol;
     const host = req.hostname;
     const url = req.originalUrl;
-    const port = process.env.PORT || PORT;
     const fullUrl = `${protocol}://${host}:${port}${url}`
     const responseString = `Full URL is: ${fullUrl}`;
     console.log(responseString)
@@ -37,7 +36,8 @@ res.cookie('test', JSON.stringify(myc), {
     httpOnly: false, // http only, prevents JavaScript cookie access
     secure: false // cookie must be sent over https / ssl
 });
-//res.send(myc)
+console.dir(req.cookies.test)
+console.log(req.cookies.test)
 next()
 })
 
