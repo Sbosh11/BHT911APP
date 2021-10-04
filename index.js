@@ -49,7 +49,12 @@ app.get("/", (req, res) => {
 
 
 app.get("/", function (req, res, next) {
- if (req.query.token !== "" && req.query.request_id) {
+  res.json(req.query)
+ console.log(req.body)
+ console.log(req.query)
+ next()
+ });
+ /*if (req.query.token !== "" && req.query.request_id) {
  res.json(req.query)
  console.log(req.body)
 
@@ -59,8 +64,8 @@ next();
   console.log("No auth");
   res.send("No Auth");
   next();
- }
-});
+ }*/
+
 
 app.post('/', (req, res,next) => {
 console.log(req.body)
