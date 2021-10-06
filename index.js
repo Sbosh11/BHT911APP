@@ -65,7 +65,7 @@ app.get("/", function (req, res, next) {
  next()
  });
 
-app.get("/accept", (req, res,next) => {
+app.post("/", (req, res,next) => {
 
 //res.redirect('/')
 
