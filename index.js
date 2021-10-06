@@ -66,12 +66,12 @@ next();
   next();
  }*/
 
-
+/*
 app.post('/', (req, res,next) => {
 console.log(req.body)
 res.redirect('/accept')
 })
-
+*/
 
 app.get("/decline", (req, res) => {
  res.send("Declined");
@@ -83,24 +83,22 @@ next()
 });
 
 
- app.get("/accept", (req, res,next) => {
-res.send("Hello")
- next()
-});
-
 app.post("/accept", (req, res,next) => {
-console.log(req.body)
-res.send(req.body)
+if(req.body.Reason =="Success") {
+  console.log("Payment Successful")
+}
+
+res.redirect('/')
 
 next()
 });
-
+//success=true <-  for successful payment otherwise false
+//subscriptionId <- if you not using family subscriptions you can leave this blank
+//token="some string"
 
 app.post("/redirect", (req, res,next) => {
 next()
 });
-
-app.get('/')
 
 
 app.listen(port, () => {
