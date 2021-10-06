@@ -67,10 +67,14 @@ app.get("/", function (req, res, next) {
 
 app.post("/", (req, res,next) => {
 
+  if(req.body.Reason =="Success") {
+  console.log("Payment Successful")
+  }
 //res.redirect('/')
 
 let mycoo = ('cookie: ', req.cookies.tok.token)
 console.log(mycoo); 
+
 //console.log(mycoo); 
 //let text = localStorage.getItem("testJSON");
 //let obj = JSON.parse(mycoo);
