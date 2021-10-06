@@ -34,13 +34,13 @@ const protocol = req.protocol;
     const fullUrl = `${protocol}://${host}:${port}${url}`
     const responseString = `Full URL is: ${fullUrl}`;
    console.log(responseString)
-res.cookie('test', myc, {
+res.cookie('tok', myc, {
     maxAge: 86400 * 1000, // 24 hours
     httpOnly: false, // http only, prevents JavaScript cookie access
     secure: false // cookie must be sent over https / ssl
 });
-
-
+console.log(req.cookies.tok)
+console.log(req.cookies.tok.token)
 //let text = localStorage.getItem("testJSON");
 //let obj = JSON.parse(mycoo);
 //console.log(obj)
@@ -69,7 +69,7 @@ app.post("/", (req, res,next) => {
 
 //res.redirect('/')
 
-let mycoo = ('cookie: ', req.cookies.test.token)
+let mycoo = ('cookie: ', req.cookies.tok.token)
 console.log(mycoo); 
 //console.log(mycoo); 
 //let text = localStorage.getItem("testJSON");
