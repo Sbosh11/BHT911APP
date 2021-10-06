@@ -89,14 +89,11 @@ res.send("Hello")
 });
 
 app.post("/accept", (req, res,next) => {
-console.log()
+console.log(req.body)
+res.send(req.body)
+
 next()
 });
-
-
-
-
-
 
 
 app.post("/redirect", (req, res,next) => {
