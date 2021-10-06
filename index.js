@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const port = process.env.PORT || 8282;
+const axios = require("axios");
 //const code = require("./routes/code.js");
 const path = require("path");
 //const bodyParser = require('body-parser');
@@ -12,6 +13,8 @@ app.use(express.json());
 app.use(cors());
 app.options("*", cors());
 app.use(express.urlencoded({ extended: true }));
+
+
 app.use('/admin', function (req, res, next) { // GET 'http://www.example.com/admin/new?a=b'
   console.dir(req.originalUrl) // '/admin/new?a=b' (WARNING: beware query string)
   console.dir(req.baseUrl) // '/admin'
@@ -30,14 +33,21 @@ const protocol = req.protocol;
     const url = req.originalUrl;
     const fullUrl = `${protocol}://${host}:${port}${url}`
     const responseString = `Full URL is: ${fullUrl}`;
-    console.log(responseString)
-res.cookie('test', JSON.stringify(myc), {
+   console.log(responseString)
+res.cookie('test', myc, {
     maxAge: 86400 * 1000, // 24 hours
     httpOnly: false, // http only, prevents JavaScript cookie access
     secure: false // cookie must be sent over https / ssl
 });
-console.dir(req.cookies.test)
-console.log(req.cookies.test)
+
+
+//let text = localStorage.getItem("testJSON");
+//let obj = JSON.parse(mycoo);
+//console.log(obj)
+//console.dir(req.cookies.test)
+//console.log(req.cookies.test['token'])
+//console.log(req.cookies['test'].token)*/
+
 next()
 })
 
@@ -54,6 +64,73 @@ app.get("/", function (req, res, next) {
  console.log(req.query)
  next()
  });
+
+app.get("/accept", (req, res,next) => {
+
+//res.redirect('/')
+
+let mycoo = ('cookie: ', req.cookies.test.token)
+console.log(mycoo); 
+//console.log(mycoo); 
+//let text = localStorage.getItem("testJSON");
+//let obj = JSON.parse(mycoo);
+//console.log(obj)
+
+
+///console.log(mycoo)
+const data = JSON.stringify({
+  "webSubscription": 4
+});
+
+let config = {
+ method: 'POST',
+ url: 'http://staging-panic.aura.services/panic-api/v2/subscriptions',
+  headers: { 
+    'Authorization': 'Bearer '+ mycoo, 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios(config)
+console.log(config)
+.then(function (response) {
+ console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+console.log(error);
+});
+/*fetch("http://staging-panic.aura.services/panic-api/v2/subscriptions", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));*/
+
+next()
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  /*if (req.query.token !== "" && req.query.request_id) {
  res.json(req.query)
  console.log(req.body)
@@ -82,16 +159,56 @@ console.log(res.json(req.body))
 next()
 });
 
-
+/*
 app.post("/accept", (req, res,next) => {
 if(req.body.Reason =="Success") {
   console.log("Payment Successful")
 }
 
-res.redirect('/')
+//res.redirect('/')
+/*
+let mycoo = ('cookie: ', req.cookies.test.token)
+console.log(mycoo); 
+//let text = localStorage.getItem("testJSON");
+//let obj = JSON.parse(mycoo);
+//console.log(obj)
+
+const bearerToken = mycoo
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Bearer " + bearerToken);
+myHeaders.append("Content-Type", "application/json");
+
+var raw = JSON.stringify({
+  "webSubscription": 4
+});
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+console.log(requestOptions)
+fetch("http://staging-panic.aura.services/panic-api/v2/subscriptions", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
 
 next()
+});*/
+//success=true <-  for successful payment otherwise false
+//subscriptionId <- if you not using family subscriptions you can leave this blank
+//token="some string"
+
+
+
+
+app.post("/redirect", (req, res,next) => {
+next()
 });
+
+
+
 //success=true <-  for successful payment otherwise false
 //subscriptionId <- if you not using family subscriptions you can leave this blank
 //token="some string"
@@ -99,6 +216,7 @@ next()
 app.post("/redirect", (req, res,next) => {
 next()
 });
+
 
 
 app.listen(port, () => {
